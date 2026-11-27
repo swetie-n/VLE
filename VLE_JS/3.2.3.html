@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tính số ngày trong tháng</title>
+<style>
+  body { font-family: "Times New Roman", serif; }
+  .khung {
+    width: 380px;
+    border: 1px solid #555;
+    padding: 12px 14px;
+  }
+  .hang { display: flex; gap: 8px; }
+  .hang input[type=text] { flex: 1; font-size: 13px; padding: 4px; }
+  .hang button { font-size: 13px; padding: 4px 8px; }
+  #ket_qua { margin: 18px 0 14px; font-size: 20px; }
+</style>
+</head>
+<body>
+  <div class="khung">
+    <div class="hang">
+      <input type="text" id="thang" value="1">
+      <button onclick="tinhSoNgay()">Tính số ngày</button>
+    </div>
+    <p id="ket_qua"></p>
+  </div>
+
+<script>
+  function tinhSoNgay() {
+    var thang = parseInt(document.getElementById("thang").value);
+    var ketQua;
+    switch (thang) {
+      case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+        ketQua = "Tháng " + thang + " có 31 ngày"; break;
+      case 4: case 6: case 9: case 11:
+        ketQua = "Tháng " + thang + " có 30 ngày"; break;
+      case 2:
+        ketQua = "Tháng 2 có 28 hoặc 29 ngày"; break;
+      default:
+        ketQua = "Tháng không hợp lệ (nhập từ 1 đến 12)";
+    }
+    document.getElementById("ket_qua").innerHTML = ketQua;
+  }
+  tinhSoNgay(); 
+</script>
+</body>
+</html>

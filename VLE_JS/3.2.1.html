@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Hiệu chỉnh theo sự kiện chuột</title>
+<style>
+  body { font-family: "Times New Roman", serif; font-size: 18px; }
+  .item { margin-bottom: 25px; }
+  #box {
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #333;
+    background: #EEE;
+    cursor: pointer;
+  }
+  #hinh { width: 200px; height: 150px; display: block; }
+  input[type=text] { font-size: 16px; padding: 4px; width: 250px; }
+  button { font-size: 16px; padding: 4px 10px; }
+</style>
+</head>
+<body>
+
+<div class="item">
+  <div id="box" onmouseover="doiNoiDung(true)" onmouseout="doiNoiDung(false)">Hover Me</div>
+</div>
+
+<div class="item">
+  <img id="hinh" onmouseover="phongTo(true)" onmouseout="phongTo(false)"
+       src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='150'><rect width='200' height='150' fill='%234a90d9'/><circle cx='100' cy='75' r='45' fill='%23f5c542'/></svg>"
+       alt="Hình minh họa">
+</div>
+
+<div class="item">
+  <button onclick="hienNgayGio()">Xem ngày giờ</button>
+</div>
+
+<div class="item">
+  <input type="text" id="noi_dung" value="chuyen sang chu in hoa">
+  <button onclick="inHoa()">IN HOA</button>
+</div>
+
+<script>
+  function doiNoiDung(vao) {
+    document.getElementById("box").innerHTML = vao ? "Mouse Event" : "Hover Me";
+  }
+
+  var hinh = document.getElementById("hinh");
+  var rong = hinh.width, cao = hinh.height;
+  function phongTo(vao) {
+    if (vao) {
+      hinh.style.width  = (rong * 1.1) + "px";
+      hinh.style.height = (cao * 1.1) + "px";
+    } else {
+      hinh.style.width  = rong + "px";
+      hinh.style.height = cao + "px";
+    }
+  }
+
+  function hienNgayGio() {
+    var now = new Date();
+    alert("Ngày giờ hiện tại: " + now.toLocaleString("vi-VN"));
+  }
+
+  function inHoa() {
+    var o = document.getElementById("noi_dung");
+    o.value = o.value.toUpperCase();
+  }
+</script>
+</body>
+</html>

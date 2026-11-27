@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tính lãi suất ngân hàng</title>
+</head>
+<body>
+<h2>Tính lãi suất ngân hàng (lãi đơn)</h2>
+<script>
+  let soTienVay = parseFloat(prompt("Nhập số tiền vay (triệu đồng):", "50"));
+  let laiSuat   = parseFloat(prompt("Nhập lãi suất (%/năm):", "8"));
+  let n         = parseInt(prompt("Nhập số năm (n):", "2"));
+
+  if (isNaN(soTienVay) || isNaN(laiSuat) || isNaN(n)) {
+    document.write("Dữ liệu nhập vào không hợp lệ!");
+  } else {
+    let laiMotNam = soTienVay * laiSuat / 100;
+    let tongTien = soTienVay + n * laiMotNam;
+
+    document.write("<p>Số tiền vay: " + soTienVay + " (triệu đồng)</p>");
+    document.write("<p>Lãi suất: " + laiSuat + "%/năm</p>");
+    document.write("<p>Số năm: " + n + "</p>");
+    document.write("<p>Tiền lãi mỗi năm: " + soTienVay + " * " + laiSuat + "% = " + laiMotNam + " (triệu đồng)</p>");
+    document.write("<p><b>Sau " + n + " năm, số tiền cả gốc lẫn lãi là: " +
+      soTienVay + " + " + n + " * " + laiMotNam + " = " + tongTien + " (triệu đồng)</b></p>");
+  }
+</script>
+</body>
+</html>
